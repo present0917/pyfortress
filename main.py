@@ -11,7 +11,7 @@ tank1=pygame.transform.scale(tank1,(80,60))
 
 
 def running():
-    global done, tank1
+    global tank1, done
     x=50
     y=50
     while not done:
@@ -21,6 +21,18 @@ def running():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done=True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    y-=10
+                elif event.key == pygame.K_DOWN:
+                    y+=10
+                elif event.key == pygame.K_RIGHT:
+                    x+=10
+                elif event.key == pygame.K_LEFT:
+                    x-=10
+
+
+
         screen.blit(tank1,(x,y))
         pygame.display.update()
 
