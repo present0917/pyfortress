@@ -1,13 +1,12 @@
 import pygame
+from tank import tank
 pygame.init()
 backgroundColor=(255,255,255)
 background=[800,600]
 screen=pygame.display.set_mode(background)
 done=False
 clock=pygame.time.Clock()
-tank1=pygame.image.load('images/tank/missile.png')
-tank1=pygame.transform.scale(tank1,(80,60))
-
+tank1=tank('images/tank/missile.png',(100,60))#tank 객체를 사용해 모듈화해서 사용.
 
 
 def running():
@@ -33,7 +32,7 @@ def running():
 
 
 
-        screen.blit(tank1,(x,y))
+        screen.blit(tank1.img,(x,y))
         pygame.display.update()
 
 
