@@ -1,19 +1,18 @@
 import pygame
 pygame.init()
-backgroundColor=(255,255,255)
-background=[800,600]
-screen=pygame.display.set_mode(background)
-done=False
-clock=pygame.time.Clock()
-tank1=pygame.image.load('images/tank/missile.png')
-tank1=pygame.transform.scale(tank1,(80,60))
-
-
+backgroundColor=(255,255,255) #배경색지정
+background=[800,600] #배경 해상도
+screen=pygame.display.set_mode(background) #screen을 지정한 해상도로
+done=False #게임이 끝났는가?
+clock=pygame.time.Clock() 
+tank1=pygame.image.load('images/tank/missile.png') #이미지 로드
+tank1=pygame.transform.scale(tank1,(100,60)) #이미지크기
+import map
 
 def running():
-    global tank1, done
-    x=50
-    y=50
+    global tank1, done #케릭터와 완료여부 전역변수로
+    tank1x=50 #tank 초기위치
+    tank1y=50
     while not done:
         clock.tick(30)
         screen.fill(backgroundColor)
@@ -23,17 +22,18 @@ def running():
                 done=True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    y-=10
+                    tank1y-=10
                 elif event.key == pygame.K_DOWN:
-                    y+=10
+                    tank1y+=10
                 elif event.key == pygame.K_RIGHT:
-                    x+=10
+                    tank1x+=10
                 elif event.key == pygame.K_LEFT:
-                    x-=10
+                    tank1x-=10
 
+       
+        map.drawRec(screen, (0,0,0), (50,500,300,50))
 
-        pygame.draw.rect(screen ,(0,0,0), (50,500,300,50))
-        screen.blit(tank1,(x,y))
+        screen.blit(tank1,(tank1x,tank1y))
         pygame.display.update()
 
 
