@@ -32,7 +32,7 @@ def running():
                     x-=10
 
 
-
+        pygame.draw.rect(screen ,(0,0,0), (50,500,300,50))
         screen.blit(tank1,(x,y))
         pygame.display.update()
 
